@@ -1,0 +1,58 @@
+[
+    {
+        "gender": "M",
+        "minAge": 18,
+        "maxAge": 40,
+        "smoker": false,
+        "cost": 0.10
+    },
+    {
+        "gender": "F",
+        "minAge": 18,
+        "maxAge": 40,
+        "smoker": false,
+        "cost": 0.10
+    },
+    {
+        "gender": "M",
+        "minAge": 18,
+        "maxAge": 40,
+        "smoker": true,
+        "cost": 0.25
+    },
+    {
+        "gender": "F",
+        "minAge": 18,
+        "maxAge": 40,
+        "smoker": true,
+        "cost": 0.25
+    },
+    {
+        "gender": "M",
+        "minAge": 40,
+        "maxAge": 60,
+        "smoker": false,
+        "cost": 0.30
+    },
+    {
+        "gender": "F",
+        "minAge": 40,
+        "maxAge": 60,
+        "smoker": false,
+        "cost": 0.30
+    },
+    {
+        "gender": "M",
+        "minAge": 40,
+        "maxAge": 60,
+        "smoker": true,
+        "cost": 0.55
+    },
+    {
+        "gender": "M",
+        "minAge": 40,
+        "maxAge": 60,
+        "smoker": true,
+        "cost": 0.55
+    }
+]
