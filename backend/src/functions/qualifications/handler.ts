@@ -5,10 +5,11 @@ import { getQualification } from "src/business/Qualification";
 import { Readable } from "stream";
 import * as Joi from "joi";
 import { CustomerErrors } from "src/types/Errors";
+import { CustomerResponse } from "src/types/customerResponse";
 
 const csv = require("csv-parser");
-const responses = [];
-const errors :CustomerErrors[] = [];
+let responses :CustomerResponse[] = [];
+let errors :CustomerErrors[] = [];
 
 const schema = Joi.object({
   name: Joi.string().min(3).required(),
@@ -23,12 +24,14 @@ const schema = Joi.object({
   postalcode: Joi.string().min(1).required(),
   policyrequested: Joi.string().min(6).required(),
 });
+
+
 const qualifiteCustomers = async (event) => {
-  console.log("el evento", event.body);
+  responses = [];
+  errors = [];
   try {
     await readCSV(event.body);
   } catch(e) { }
-  console.log("responses", responses);
   return formatJSONResponse({
     responses,
     errors,
@@ -44,7 +47,6 @@ const readCSV = async (fileName: string) => {
     s.pipe(csv())
       .on("data", async (product) => {
         try {
-          console.log("Este es el producto", product);
           const validate = schema.validate(product);
           if (!validate.error) {
             const consumer = createCustomer(product);
@@ -61,10 +63,7 @@ const readCSV = async (fileName: string) => {
           reject();
         }
       })
-      .on("end", resolve)
-      .on("error", () => {
-        console.log("****Un error!!!");
-      });
+      .on("end", resolve);
   });
 };
 

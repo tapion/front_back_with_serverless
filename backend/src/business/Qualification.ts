@@ -1,4 +1,5 @@
 import { roundTo } from "@libs/MathHelpers";
+import { CustomerResponse } from "src/types/customerResponse";
 import { getDebits } from "./Debits";
 import { PotentialCustomer } from "./interfaces/PotentialCustomer";
 import scoreTable from "./scores.json";
@@ -10,15 +11,15 @@ const maxCharged = 1.25;
 const basicCharged = 1.15;
 const decimals = 2;
 
-export const getQualification = (customer: PotentialCustomer): any => {
+export const getQualification = (
+  customer: PotentialCustomer
+): CustomerResponse => {
   try {
     const bmi = getBMI(customer);
     const debits = getDebits(customer, bmi);
-    console.log("Los debits", debits);
     const needInterview = debits > debitsForInterview;
-    console.log("Los needInterview", needInterview);
     const amountTocharged = getAmountToCharged(debits);
-    console.log("Los amountTocharged", amountTocharged);
+
     const score = scoreTable.find(
       (score) =>
         score.gender === customer.gender &&
@@ -26,14 +27,13 @@ export const getQualification = (customer: PotentialCustomer): any => {
         customer.age >= score.minAge &&
         customer.age < score.maxAge
     );
-    if (!score)
+
+    if (!score) {
       throw new Error("There are not score configuration for this customer");
-    // if(!score) throw new Error{message: `There are not score configuration for this customer`}
-    console.log("Los score", score);
+    }
+
     const rateAnnual = amountTocharged * score.cost * customer.policyrequested;
-    console.log("Los rateAnnual", rateAnnual);
     const ratePerMonth = rateAnnual / 12;
-    console.log("Los ratePerMonth", ratePerMonth);
 
     return {
       name: customer.name,

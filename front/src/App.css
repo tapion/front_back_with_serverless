@@ -50,3 +50,55 @@
   padding: 13px;
   font-size: 14px;
 }
+
+table {
+  margin: 12px;
+  border-collapse: collapse;
+  border: 1pt solid gray;
+}
+
+table td {
+  padding: 5px;
+}
+
+table thead tr{
+  font-weight: 500;
+  border-bottom: 1pt solid;
+}
+
+.risk0 {
+  border: 2pt dashed green;
+}
+.risk2 {
+  font-style: italic;
+  color: orange;
+}
+.risk3 {
+  font-style: italic;
+  color: red;
+}
+
+h4 {
+  text-align: left;
+  padding-left: 5px;
+}
+
+.usd {
+  text-align: right;
+}
+
+.goBackBtn{
+  padding: 13px;
+  color: rgb(25, 118, 210);
+  font-weight: 700;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  border: 1pt outset rgb(25, 118, 210);
+}
+
+.goBackBtn:hover {
+  padding: 13px;
+  font-size: 14px;
+}

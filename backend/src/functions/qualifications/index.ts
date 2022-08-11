@@ -1,4 +1,3 @@
-// import schema from './schema';
 import { handlerPath } from '@libs/handler-resolver';
 
 
@@ -8,12 +7,8 @@ export default {
     {
       http: {
         method: 'put',
+        cors: true,
         path: 'qualified',
-        // request: {
-        //   schemas: {
-        //     'application/json': schema,
-        //   },
-        // },
       },
     },
   ],

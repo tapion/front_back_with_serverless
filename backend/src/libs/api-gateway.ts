@@ -10,8 +10,9 @@ export const formatJSONResponse = (response: Record<string, unknown>) => {
     headers: {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET'
+      'Access-Control-Allow-Methods': "PUT"
     },
     body: JSON.stringify(response)
   }
 }
+
